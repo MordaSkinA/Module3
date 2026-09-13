@@ -113,16 +113,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
                     ""priority"": 0
                 },
                 {
-                    ""name"": ""Possess"",
-                    ""type"": ""Button"",
-                    ""id"": ""4cd1c8d5-35ed-43a9-8c67-e800b9cd9b7d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false,
-                    ""priority"": 0
-                },
-                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""c674f622-6031-4308-9767-426be150b7da"",
@@ -218,17 +208,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fd453122-123b-4802-bd46-e05cd4571751"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Possess"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -468,7 +447,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
         m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
         m_CharacterControls_Run = m_CharacterControls.FindAction("Run", throwIfNotFound: true);
-        m_CharacterControls_Possess = m_CharacterControls.FindAction("Possess", throwIfNotFound: true);
         m_CharacterControls_Look = m_CharacterControls.FindAction("Look", throwIfNotFound: true);
         m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
         // SpiritControls
@@ -563,7 +541,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
     private List<ICharacterControlsActions> m_CharacterControlsActionsCallbackInterfaces = new List<ICharacterControlsActions>();
     private readonly InputAction m_CharacterControls_Move;
     private readonly InputAction m_CharacterControls_Run;
-    private readonly InputAction m_CharacterControls_Possess;
     private readonly InputAction m_CharacterControls_Look;
     private readonly InputAction m_CharacterControls_Interact;
     /// <summary>
@@ -585,10 +562,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterControls/Run".
         /// </summary>
         public InputAction @Run => m_Wrapper.m_CharacterControls_Run;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControls/Possess".
-        /// </summary>
-        public InputAction @Possess => m_Wrapper.m_CharacterControls_Possess;
         /// <summary>
         /// Provides access to the underlying input action "CharacterControls/Look".
         /// </summary>
@@ -629,9 +602,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
-            @Possess.started += instance.OnPossess;
-            @Possess.performed += instance.OnPossess;
-            @Possess.canceled += instance.OnPossess;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -655,9 +625,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
-            @Possess.started -= instance.OnPossess;
-            @Possess.performed -= instance.OnPossess;
-            @Possess.canceled -= instance.OnPossess;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -997,13 +964,6 @@ public partial class @Module1: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRun(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Possess" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPossess(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

@@ -27,16 +27,6 @@
                     "priority": 0
                 },
                 {
-                    "name": "Possess",
-                    "type": "Button",
-                    "id": "4cd1c8d5-35ed-43a9-8c67-e800b9cd9b7d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
                     "name": "Look",
                     "type": "Value",
                     "id": "c674f622-6031-4308-9767-426be150b7da",
@@ -132,17 +122,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fd453122-123b-4802-bd46-e05cd4571751",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Possess",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

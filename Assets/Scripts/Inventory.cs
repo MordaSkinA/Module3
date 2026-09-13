@@ -4,6 +4,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private readonly Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
+    public IReadOnlyDictionary<ItemData, int> Items => items;
 
     public void AddItem(ItemData item, int amount = 1)
     {
