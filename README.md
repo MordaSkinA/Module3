@@ -55,6 +55,22 @@ Assets/
 4. Enter Play mode
 5. Either wait for the NPC to get hungry and walk itself to the trader, or possess the body and walk up to the trader and press E to buy an item directly
 
+## Balance model
+
+A spreadsheet model of the NPC food economy: [`npc_economy_model.csv`](npc_economy_model.csv).
+
+Inputs are taken from the Unity Inspector: apple price 80 coins, hunger growth 1 per second, seek-food threshold 70, satisfied threshold 20, NPC starting wallet 900 coins, one apple per meal.
+
+| Metric | Value |
+|---|---|
+| Time between meals | 50 s |
+| NPC food spending | 1.6 coins/s (96 coins/min) |
+| Apples the starting wallet covers | 11 |
+| Time until the NPC can no longer afford food (no income) | about 620 s (~10 min) |
+| Break-even NPC income | 1.6 coins/s |
+
+Walking time to the trader and the eating time itself (about 3.3 s) are not counted. The break-even income is the target for the future earning system.
+
 ## Known limitations (by design, for this module's scope)
 
 - An NPC with no money and no food is not handled: it simply stays in Idle/Wandering while hunger keeps rising
@@ -64,6 +80,6 @@ Assets/
 
 ## Roadmap
 
-- [ ] NPC earning system (labor, selling their own items)
+- [ ] NPC earning system (labor, selling their own items), tuned to the break-even income of 1.6 coins/s from the balance model
 - [ ] Limited trader stock
 - [ ] Handling the "no money and no food" case (for example, the NPC seeking another income source)
