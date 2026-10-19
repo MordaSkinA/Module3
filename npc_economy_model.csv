@@ -1,13 +1,13 @@
 Section,Parameter,Value,Unit,Source / formula
-"Input,Apple price,80,coins,""ItemData Apple, Price"""
+Input,Apple price,80,coins,ItemData Apple - Price
 Input,Apples per meal,1,pcs
-"Input,Hunger growth,1,per s,""Npcneeds, Hunger Growth Per Second"""
-"Input,Seek-food threshold,70,units,""Npcbehaviour, Hunger Threshold To Seek Food"""
-"Input,Satisfied threshold,20,units,""Npcbehaviour, Hunger Threshold Satisfied"""
-"Input,Eating speed,15,per s,""Npcbehaviour, Eating Speed"""
-"Input,NPC starting wallet,900,coins,""Wallet on NPC, set manually"""
-"Input,Player wallet,9000,coins,""Wallet on player, set manually"""
-"Input,Starting hunger,0,units,""Npcneeds, Hunger"""
+Input,Hunger growth,1,per s,Npcneeds - Hunger Growth Per Second
+Input,Seek-food threshold,70,units,Npcbehaviour - Hunger Threshold To Seek Food
+Input,Satisfied threshold,20,units,Npcbehaviour - Hunger Threshold Satisfied
+Input,Eating speed,15,per s,Npcbehaviour - Eating Speed
+Input,NPC starting wallet,900,coins,Wallet on NPC - set manually
+Input,Player wallet,9000,coins,Wallet on player - set manually
+Input,Starting hunger,0,units,Npcneeds - Hunger
 Calculation,Time to first meal,70,s,(seek threshold - starting hunger) / hunger growth
 Calculation,Interval between meals,50,s,(seek threshold - satisfied threshold) / hunger growth
 Calculation,Eating duration (info only),3.33,s,(seek threshold - satisfied threshold) / eating speed
@@ -19,8 +19,8 @@ Calculation,Meals the NPC wallet covers (no income),11,pcs,floor(wallet / spendi
 Calculation,Meals the player wallet covers (no income),112,pcs,floor(wallet / spending per meal)
 Calculation,Time until NPC cannot afford food (no income),620,s,first meal time + covered meals x interval
 Calculation,Same in minutes,10.33,min,
-"Income scenario,A: current prototype,0,coins/s,""no income source, coins set manually"""
-"Income scenario,B: partial income,0.8,coins/s,""illustrative value"""
+Income scenario,A: current prototype,0,coins/s,no income source - coins set manually
+Income scenario,B: partial income,0.8,coins/s,illustrative value
 Income scenario,C: break-even,1.6,coins/s,equals spending per second
 Result,Scenario A: time until NPC cannot afford food,620,s,first meal the wallet cannot cover
 Result,Scenario B: time until NPC cannot afford food,1170,s,first meal the wallet cannot cover
