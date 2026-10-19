@@ -1,36 +1,27 @@
-8=8-<>45;L M:>=><8:8 NPC: 540 8 :>H5;Q:;;;
-Q;BK5 OG59:8 A A8=8< B5:AB><  2E>4=K5 40==K5, 8E <>6=> <5=OBL;;;
-;;;
-0@0<5B@;=0G5=85;4.;AB>G=8: / :><<5=B0@89
-&5=0 O1;>:0;80;<>=5B;ItemData «Apple», поле
-/1;>: 70 >48= ?@8Q< ?8I8;1;HB;
- >AB 3>;>40;1;54/A;Npcneeds, Hunger Growth Per Second
->@>3 �84B8 70 54>9�;70;54;Npcbehaviour, Hunger Threshold To Seek Food
->@>3 �AKB�;20;54;Npcbehaviour, Hunger Threshold Satisfied
-!:>@>ABL 54K;15;54/A;Npcbehaviour, Eating Speed
-!B0@B>2K9 :>H5;Q: NPC;900;<>=5B;"Wallet NPC; выставлен"
->H5;Q: 83@>:0;9000;<>=5B;"Wallet игрока; выстав"
-!B0@B>2K9 3>;>4;0;54;Npcneeds, Hunger
-;;;
- 0AGQB;=0G5=85;4.;$>@<C;0 A;>20<8
-@5<O 4> ?5@2>3> ?@8Q<0 ?8I8;70,0;A;(порог поиска − стартовы�
-=B5@20; <564C ?@8Q<0<8 ?8I8;50,0;A;(порог поиска − порог сы
-;8B5;L=>ABL A0<>9 54K (A?@02>G=>);3,3;A;(порог поиска − порог сы�
- 0AE>4 <>=5B 70 ?@8Q< ?8I8;80;<>=5B;F5=0 � O1;>: 70 ?@8Q<
- 0AE>4 <>=5B 2 A5:C=4C;1,60;<>=5B/A;@0AE>4 70 ?@8Q< / 8=B5@20;
- 0AE>4 <>=5B 2 <8=CBC;96,0;<>=5B/<8=;@0AE>4 2 A5:C=4C � 60
-57C1KB>G=K9 4>E>4 NPC;1,60;<>=5B/A;4>E>4, ?@8 :>B>@>< :>H5;Q: =5 C1K205B
-@8Q<>2 ?8I8 =0 :>H5;Q: NPC (157 4>E>40);11;HB;F5;0O G0ABL: :>H5;Q: / @0AE>4 70 ?@8Q<
-@8Q<>2 ?8I8 =0 :>H5;Q: 83@>:0 (157 4>E>40);112;HB;F5;0O G0ABL: :>H5;Q: / @0AE>4 70 ?@8Q<
-@5<O 4> �@07>@5=8O� NPC (157 4>E>40);620;A;?5@2K9 ?@8Q<, =0 :>B>@K9 C65 =5 E20B8B <>=5B
-"> 65 2 <8=CB0E;10,3;<8=;
-;;;
-!F5=0@89 4>E>40 NPC;>E>4, <>=5B/A;4.;><<5=B0@89
-A: как в протот;0,00;<>=5B/A;8AB>G=8:0 4>E>40 =5B
-B: частичный дох;0,80;<>=5B/A;CA;>2=>5 7=0G5=85 4;O A@02=5=8O
-C: безубы;1,60;<>=5B/A;@025= @0AE>4C =0 54C
-;;;
-B>3 ?> AF5=0@8O< (30 ?@8Q<>2 ?8I8);@5<O �@07>@5=8O�, A;;><<5=B0@89
-!F5=0@89 A;620;;?5@2>5 2@5<O, :>340 :>H5;L:0 =5 E20B8;> =0 O1;>:>
-!F5=0@89 B;1170;;?5@2>5 2@5<O, :>340 :>H5;L:0 =5 E20B8;> =0 O1;>:>
-!F5=0@89 C;=5 @07>@8BAO;;?5@2>5 2@5<O, :>340 :>H5;L:0 =5 E20B8;> =0 O1;>:>
+Section,Parameter,Value,Unit,Source / formula
+"Input,Apple price,80,coins,""ItemData Apple, Price"""
+Input,Apples per meal,1,pcs
+"Input,Hunger growth,1,per s,""Npcneeds, Hunger Growth Per Second"""
+"Input,Seek-food threshold,70,units,""Npcbehaviour, Hunger Threshold To Seek Food"""
+"Input,Satisfied threshold,20,units,""Npcbehaviour, Hunger Threshold Satisfied"""
+"Input,Eating speed,15,per s,""Npcbehaviour, Eating Speed"""
+"Input,NPC starting wallet,900,coins,""Wallet on NPC, set manually"""
+"Input,Player wallet,9000,coins,""Wallet on player, set manually"""
+"Input,Starting hunger,0,units,""Npcneeds, Hunger"""
+Calculation,Time to first meal,70,s,(seek threshold - starting hunger) / hunger growth
+Calculation,Interval between meals,50,s,(seek threshold - satisfied threshold) / hunger growth
+Calculation,Eating duration (info only),3.33,s,(seek threshold - satisfied threshold) / eating speed
+Calculation,Spending per meal,80,coins,price x apples per meal
+Calculation,Spending per second,1.6,coins/s,spending per meal / interval
+Calculation,Spending per minute,96,coins/min,spending per second x 60
+Calculation,Break-even NPC income,1.6,coins/s,equals spending per second
+Calculation,Meals the NPC wallet covers (no income),11,pcs,floor(wallet / spending per meal)
+Calculation,Meals the player wallet covers (no income),112,pcs,floor(wallet / spending per meal)
+Calculation,Time until NPC cannot afford food (no income),620,s,first meal time + covered meals x interval
+Calculation,Same in minutes,10.33,min,
+"Income scenario,A: current prototype,0,coins/s,""no income source, coins set manually"""
+"Income scenario,B: partial income,0.8,coins/s,""illustrative value"""
+Income scenario,C: break-even,1.6,coins/s,equals spending per second
+Result,Scenario A: time until NPC cannot afford food,620,s,first meal the wallet cannot cover
+Result,Scenario B: time until NPC cannot afford food,1170,s,first meal the wallet cannot cover
+Result,Scenario C: time until NPC cannot afford food,never within 30 meals,s,first meal the wallet cannot cover
