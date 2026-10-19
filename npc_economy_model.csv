@@ -1,6 +1,6 @@
 Section,Parameter,Value,Unit,Source / formula
 Input,Apple price,80,coins,ItemData Apple - Price
-Input,Apples per meal,1,pcs
+Input,Apples per meal,1,pcs,one apple per meal
 Input,Hunger growth,1,per s,Npcneeds - Hunger Growth Per Second
 Input,Seek-food threshold,70,units,Npcbehaviour - Hunger Threshold To Seek Food
 Input,Satisfied threshold,20,units,Npcbehaviour - Hunger Threshold Satisfied
